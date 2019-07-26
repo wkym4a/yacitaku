@@ -2,6 +2,12 @@ Rails.application.routes.draw do
 
   root 'tops#index'
 
+  resources :owners do
+    collection do
+      get :download
+    end
+  end
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'users/show'
 

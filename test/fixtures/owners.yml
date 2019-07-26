@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  name_kana: MyString
+  post_code: MyString
+  address: MyString
+  tel: MyString
+  tel2: MyString
+  fax: MyString
+  property_name: 
+  property_name_kana: MyString
+  property_post_code: MyString
+  property_address: MyString
+  property_type: MyString
+  bank: MyString
+  branch: MyString
+  account_type: 1
+  account_num: MyString
+  account_name: MyString
+  memo: MyText
+
+two:
+  name: MyString
+  name_kana: MyString
+  post_code: MyString
+  address: MyString
+  tel: MyString
+  tel2: MyString
+  fax: MyString
+  property_name: 
+  property_name_kana: MyString
+  property_post_code: MyString
+  property_address: MyString
+  property_type: MyString
+  bank: MyString
+  branch: MyString
+  account_type: 1
+  account_num: MyString
+  account_name: MyString
+  memo: MyText

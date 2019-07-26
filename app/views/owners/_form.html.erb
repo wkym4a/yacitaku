@@ -1,0 +1,107 @@
+<%= form_with(model: owner, local: true) do |form| %>
+  <% if owner.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(owner.errors.count, "error") %> prohibited this owner from being saved:</h2>
+
+      <ul>
+      <% owner.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name_kana %>
+    <%= form.text_field :name_kana %>
+  </div>
+
+  <div class="field">
+    <%= form.label :post_code %>
+    <%= form.text_field :post_code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tel %>
+    <%= form.text_field :tel %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tel2 %>
+    <%= form.text_field :tel2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fax %>
+    <%= form.text_field :fax %>
+  </div>
+
+  <div class="field">
+    <%= form.label :property_name %>
+    <%= form.text_field :property_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :property_name_kana %>
+    <%= form.text_field :property_name_kana %>
+  </div>
+
+  <div class="field">
+    <%= form.label :property_post_code %>
+    <%= form.text_field :property_post_code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :property_address %>
+    <%= form.text_field :property_address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :property_type %>
+    <%= form.text_field :property_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bank %>
+    <%= form.text_field :bank %>
+  </div>
+
+  <div class="field">
+    <%= form.label :branch %>
+    <%= form.text_field :branch %>
+  </div>
+
+  <div class="field">
+    <%= form.label :account_type %>
+    <%= form.number_field :account_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :account_num %>
+    <%= form.text_field :account_num %>
+  </div>
+
+  <div class="field">
+    <%= form.label :account_name %>
+    <%= form.text_field :account_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :memo %>
+    <%= form.text_area :memo %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

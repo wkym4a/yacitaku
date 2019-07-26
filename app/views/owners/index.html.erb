@@ -1,0 +1,63 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Owners</h1>
+
+<%= link_to '全件ダウンロード', download_owners_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Name kana</th>
+      <th>Post code</th>
+      <th>Address</th>
+      <th>Tel</th>
+      <th>Tel2</th>
+      <th>Fax</th>
+      <th>Property name</th>
+      <th>Property name kana</th>
+      <th>Property post code</th>
+      <th>Property address</th>
+      <th>Property type</th>
+      <th>Bank</th>
+      <th>Branch</th>
+      <th>Account type</th>
+      <th>Account num</th>
+      <th>Account name</th>
+      <th>Memo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @owners.each do |owner| %>
+      <tr>
+        <td><%= owner.name %></td>
+        <td><%= owner.name_kana %></td>
+        <td><%= owner.post_code %></td>
+        <td><%= owner.address %></td>
+        <td><%= owner.tel %></td>
+        <td><%= owner.tel2 %></td>
+        <td><%= owner.fax %></td>
+        <td><%= owner.property_name %></td>
+        <td><%= owner.property_name_kana %></td>
+        <td><%= owner.property_post_code %></td>
+        <td><%= owner.property_address %></td>
+        <td><%= owner.property_type %></td>
+        <td><%= owner.bank %></td>
+        <td><%= owner.branch %></td>
+        <td><%= owner.account_type %></td>
+        <td><%= owner.account_num %></td>
+        <td><%= owner.account_name %></td>
+        <td><%= owner.memo %></td>
+        <td><%= link_to 'Show', owner %></td>
+        <td><%= link_to 'Edit', edit_owner_path(owner) %></td>
+        <td><%= link_to 'Destroy', owner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Owner', new_owner_path %>
