@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-
-  root 'tops#index'
+  
+  root 'owners#index'
+  # root 'tops#index'
 
   resources :owners do
     collection do

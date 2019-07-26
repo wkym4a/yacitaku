@@ -19,26 +19,24 @@
 
   <body>
 
-  <header class="clearfix">
+    <header class="head_bar">
 
+      <% if user_signed_in? %>
+        <%= t('verb.is_login',name: current_user.user_name.to_s) %>
 
-<% if user_signed_in? %>
-  <%= t('verb.is_login',name: current_user.user_name.to_s) %>
+        <%= link_to t('activerecord.models.user') + t('activerecord.attributes.user.profile'), user_path(current_user.id) %>
+        <%= link_to t('verb.logout'), destroy_user_session_path, method: :delete %>
 
-  <%= link_to t('activerecord.models.user') + t('activerecord.attributes.user.profile'), user_path(current_user.id) %>
-  <%= link_to t('verb.logout'), destroy_user_session_path, method: :delete %>
+      <% else %>
 
-<% else %>
+        <br><br>
 
-  <br><br>
+        <%= t('verb.is_not_login') %>
 
-  <%= t('verb.is_not_login') %>
+        <%= link_to t('verb.login'), new_user_session_path %>
+        <%= link_to  t('adjective.newly') + t('activerecord.normal_process.noun.save'), new_user_registration_path %>
 
-  <%= link_to t('verb.login'), new_user_session_path %>
-  <%= link_to  t('adjective.newly') + t('activerecord.normal_process.noun.save'), new_user_registration_path %>
-  
-<% end %>
-
+      <% end %>
 
   </header>
 

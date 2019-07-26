@@ -1,0 +1,54 @@
+
+<table>
+  <thead>
+    <tr>
+      <th class = "middle_cell">オーナー名</th>
+      <th class = "middle_cell">（カナ）</th>
+      <th class = "small_cell">〒</th>
+      <th class = "wide_cell">住所（オーナー）</th>
+      <th class = "middle_cell">電話①</th>
+      <th class = "middle_cell">電話②</th>
+      <th class = "middle_cell">Fax</th>
+      <th class = "middle_cell">物件名</th>
+      <th class = "middle_cell">（カナ）</th>
+      <th class = "small_cell">〒</th>
+      <th class = "wide_cell">住所（物件）</th>
+      <th class = "middle_cell">物件種別</th>
+      <th class = "middle_cell">銀行名</th>
+      <th class = "middle_cell">支店名</th>
+      <th class = "small_cell">普通/当座</th>
+      <th class = "middle_cell">口座番号</th>
+      <th class = "middle_cell">口座名義</th>
+      <th class = "wide_cell">その他・備考</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% owners.each do |owner| %>
+      <tr>
+        <td><%= owner.name %></td>
+        <td><%= owner.name_kana %></td>
+        <td><%= owner.post_code %></td>
+        <td><%= owner.address %></td>
+        <td><%= owner.tel %></td>
+        <td><%= owner.tel2 %></td>
+        <td><%= owner.fax %></td>
+        <td><%= owner.property_name %></td>
+        <td><%= owner.property_name_kana %></td>
+        <td><%= owner.property_post_code %></td>
+        <td><%= owner.property_address %></td>
+        <td><%= owner.property_type %></td>
+        <td><%= owner.bank %></td>
+        <td><%= owner.branch %></td>
+        <td><%= owner.account_type %></td>
+        <td><%= owner.account_num %></td>
+        <td><%= owner.account_name %></td>
+        <td><%= owner.memo %></td>
+        <td><%= link_to 'Show', owner %></td>
+        <td><%= link_to 'Edit', edit_owner_path(owner) %></td>
+        <td><%= link_to 'Destroy', owner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
