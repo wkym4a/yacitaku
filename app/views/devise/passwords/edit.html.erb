@@ -1,0 +1,32 @@
+<%= render "devise/shared/error_messages", resource: resource ,form_type: "change_new_password"%>
+
+<div class="user_form">
+
+<h2>パスワード再設定画面</h2>
+
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+    <%= f.hidden_field :reset_password_token %>
+
+    <%= f.label :password, "新しいパスワードを入力してください。" %><br />
+    <div class="line_info">
+      <%= f.label "パスワード" ,class: "line_content_1"  %>
+      <%= f.password_field :password, autofocus: true,  autocomplete: "new-password"  ,class: "line_content_2_large_interval"%>
+    </div>
+
+    <div class="line_info">
+      <%= f.label "パスワード（確認）" ,class: "line_content_1"  %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-off" ,class: "line_content_2_large_interval" %>
+    </div>
+
+    <div class="line_info">
+      <% if @minimum_password_length %>
+        <%= f.label "※パスワードは#{@minimum_password_length}文字以上で入力してください。" ,class: "line_content_annotation"  %>
+      <% end %><br />
+    </div>
+
+    <div class="actions">
+      <%= f.submit "パスワード再設定" ,class: "btn btn-primary line_content_btn" %>
+    </div>
+  <% end %>
+
+</div>

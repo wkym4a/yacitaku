@@ -1,0 +1,50 @@
+
+
+
+    <div class="">あいうえおかきくけこあいうえおかきくけこ</div>
+
+<%= link_to "新規📍登録" ,new_drawing_pin_path ,class: "btn btn-default btn_head" %>
+
+    <div class="">aa</div>
+<div class="">↓実際の表示予定情報</div>
+
+<% if user_signed_in? %>
+  <%= current_user.id.to_s + "さんがログインしています。"  %>
+  <br><br>
+  <%= link_to "📍を作る" ,new_drawing_pin_path ,class: "btn btn-default btn_head" %>
+  <br><br>
+  <%= link_to "📍を見る" ,drawing_pins_path ,class: "btn btn-default btn_head" %>
+  <br><br>
+
+
+  <%= select :workbox_id,"", get_workboxes_as_selectbox_info ,{}  %>
+  <br>の作業箱を<a class="btn btn-primary btn-sm" >編集</a>
+
+
+  <br><br>
+
+  <span data-controller="set-url-by-selectbox">
+    <input type="hidden" value= "/plans/" data-target = "set-url-by-selectbox.base_url" >
+    <%= select :plan_id,"", get_plans_as_selectbox_info ,{}, {:data => {:target => "set-url-by-selectbox.selected_info",:action => "change->set-url-by-selectbox#select"}} %>
+
+    <br>のプランを<%= link_to '編集する', "tttt" ,class: "btn btn-primary",method: "get" ,:data => {:target => "set-url-by-selectbox.btn"} %>
+  </span>
+
+
+  <br><br>
+  <select name=""></select><br>のプランで<a class="btn btn-primary btn-sm" >ぷらぷらする</a>
+  <br><br>
+  <%= link_to 'ユーザープロフィール', user_path(current_user.id) %>
+  <br><br>
+  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+<% else %>
+  ログインしていません。
+  <%= link_to "📍を作る" ,new_drawing_pin_path ,class: "btn btn-default btn_head" %>
+  <br><br>
+  <%= link_to "📍を見る" ,drawing_pins_path ,class: "btn btn-default btn_head" %>
+
+  <br><br>
+  <%= link_to "ログイン", new_user_session_path %>
+  <br><br>
+  <%= link_to "新規登録", new_user_registration_path %>
+<% end %>
