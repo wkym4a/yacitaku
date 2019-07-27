@@ -1,6 +1,7 @@
 class OwnersController < ApplicationController
 
   require 'csv'
+  before_action :authenticate_user!
 
   before_action :set_owner, only: [:show, :edit, :update, :destroy]
 
