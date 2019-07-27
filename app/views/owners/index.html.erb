@@ -1,8 +1,51 @@
-<p id="notice"><%= notice %></p>
+<!-- メッセージとか -->
+<p id="notice_msg"><%= render 'layouts/show_notice_msg' %></p>
+<p id="danger_msg"><%= render 'layouts/show_danger_msg' %></p>
 
-<h1>Owners</h1>
+<h1>オーナー一覧</h1>
 
-<%= link_to '全件ダウンロード', download_owners_path %>
+<%= form_with scope: :conditions, url:owners_path,method: :get ,remote: true do |form| %>
+
+  <div class="index_search_line">
+    <div class="index_search_item">
+      <%= form.label "オーナー名（部分一致）",class: "search_content_1" %>
+      <%= form.text_field :name ,class: "search_content_2" %>
+
+    </div>
+    <div class="index_search_item">
+      <%= form.label "オーナー名カナ（前方一致、全角で入力）",class: "search_content_1" %>
+      <%= form.text_field :name_kana ,class: "search_content_2" %>
+    </div>
+  </div>
+
+  <div class="index_search_line">
+    <div class="index_search_item">
+      <%= form.label "物件名（部分一致）",class: "search_content_1" %>
+      <%= form.text_field :property_name ,class: "search_content_2" %>
+
+    </div>
+    <div class="index_search_item">
+      <%= form.label "物件名カナ（前方一致、全角で入力）",class: "search_content_1" %>
+      <%= form.text_field :property_name_kana ,class: "search_content_2" %>
+    </div>
+  </div>
+
+  <div class="index_search_line">
+
+    <div class="index_search_item">
+      <%= form.submit "検索" ,id: "btn_search" , class: 'btn btn-primary btn_line_2' %>
+      <!-- <a class='btn btn-primary btn_line_1'>クリア</a>……後回し -->
+    </div>
+    <div class="index_search_item">
+    </div>
+  </div>
+
+<% end %>
+
+<div class="index_search_item">
+  <%= link_to '新規オーナー作成', new_owner_path  , class: 'btn btn-info btn_line_2' %>
+  <%= link_to '全件ダウンロード', download_owners_path , class: 'btn btn-info btn_line_2'  %>
+</div>
 
 <div class = "index_table" id = "index_table" >
 
@@ -12,5 +55,3 @@
 
 
 <br>
-
-<%= link_to 'New Owner', new_owner_path %>

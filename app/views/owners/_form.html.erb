@@ -1,108 +1,107 @@
+<!-- メッセージとか -->
+<p id="notice_msg"><%= render 'layouts/show_notice_msg' %></p>
+<p id="danger_msg"><%= render 'layouts/show_danger_msg' %></p>
 
 <%= form_with(model: owner, local: true) do |form| %>
-  <% if owner.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(owner.errors.count, "error") %> prohibited this owner from being saved:</h2>
-
-      <ul>
-      <% owner.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="field">
-    <%= form.label :name %>
+    <%= form.label "オーナー名" %>
     <%= form.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label :name_kana %>
+    <%= form.label "(カナ_全角入力)" %>
     <%= form.text_field :name_kana %>
   </div>
 
+  <%= form.label "オーナーの住所" %>
   <div class="field">
-    <%= form.label :post_code %>
+    <%= form.label "〒" %>
     <%= form.text_field :post_code %>
   </div>
 
   <div class="field">
-    <%= form.label :address %>
+    <%= form.label "住所" %>
     <%= form.text_field :address %>
   </div>
 
   <div class="field">
-    <%= form.label :tel %>
+    <%= form.label "電話①" %>
     <%= form.text_field :tel %>
   </div>
 
   <div class="field">
-    <%= form.label :tel2 %>
+    <%= form.label "電話②" %>
     <%= form.text_field :tel2 %>
   </div>
 
   <div class="field">
-    <%= form.label :fax %>
+    <%= form.label "FAX" %>
     <%= form.text_field :fax %>
   </div>
 
   <div class="field">
-    <%= form.label :property_name %>
+    <%= form.label "物件名" %>
     <%= form.text_field :property_name %>
   </div>
 
   <div class="field">
-    <%= form.label :property_name_kana %>
+    <%= form.label "(カナ_全角入力)" %>
     <%= form.text_field :property_name_kana %>
   </div>
 
+  <%= form.label "部件の住所" %>
   <div class="field">
-    <%= form.label :property_post_code %>
+    <%= form.label "〒" %>
     <%= form.text_field :property_post_code %>
   </div>
 
   <div class="field">
-    <%= form.label :property_address %>
+    <%= form.label "住所" %>
     <%= form.text_field :property_address %>
   </div>
 
   <div class="field">
-    <%= form.label :property_type %>
+    <%= form.label "物件の種類" %>
     <%= form.text_field :property_type %>
   </div>
 
+  <%= form.label "銀行情報" %>
   <div class="field">
-    <%= form.label :bank %>
+    <%= form.label "銀行名" %>
     <%= form.text_field :bank %>
+      <%= form.label "……「銀行」まで入力" %>
   </div>
 
   <div class="field">
-    <%= form.label :branch %>
+    <%= form.label "支店名" %>
     <%= form.text_field :branch %>
+    <%= form.label "……「支店」は入力不要" %>
   </div>
 
   <div class="field">
-    <%= form.label :account_type %>
-    <%= form.number_field :account_type %>
+    <%= form.label "口座種別" %>
+
+    <%= form.radio_button :account_type, 0  %><%= "普通預金　　　　" %>
+    <%= form.radio_button :account_type, 1  %><%= "当座預金" %>
   </div>
 
   <div class="field">
-    <%= form.label :account_num %>
+    <%= form.label "口座番号" %>
     <%= form.text_field :account_num %>
   </div>
 
   <div class="field">
-    <%= form.label :account_name %>
+    <%= form.label "口座名義" %>
     <%= form.text_field :account_name %>
   </div>
 
   <div class="field">
-    <%= form.label :memo %>
+    <%= form.label "備考" %>
     <%= form.text_area :memo %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "登録"%>
   </div>
 <% end %>

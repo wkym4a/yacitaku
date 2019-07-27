@@ -7,7 +7,22 @@ class OwnersController < ApplicationController
   # GET /owners
   # GET /owners.json
   def index
-    @owners = Owner.all
+
+    if params[:conditions].blank?
+      @owners = Owner.all.order(:id)
+    else
+      @owners = Owner.search_by_name_partial(params[:conditions][:name]).
+                      search_by_name_kana_forward(params[:conditions][:name_kana]).
+                      search_by_property_name_partial(params[:conditions][:property_name]).
+                      search_by_property_name_kana_forward(params[:conditions][:property_name_kana]).
+                      order(:id)
+    end
+
+    respond_to do |format|
+      format.html { render :index }
+      format.js { render :index }
+    end
+
   end
 
   # GET /owners/1
@@ -31,13 +46,15 @@ class OwnersController < ApplicationController
 
     respond_to do |format|
       if @owner.save
-        format.html { redirect_to @owner, notice: 'Owner was successfully created.' }
-        format.json { render :show, status: :created, location: @owner }
+        format.html { redirect_to new_owner_path, notice: 'オーナー情報の作成に成功しました。' }
+        # format.html { redirect_to @owner, notice: 'Owner was successfully created.' }
+        # format.json { render :show, status: :created, location: @owner }
       else
         format.html { render :new }
-        format.json { render json: @owner.errors, status: :unprocessable_entity }
+        # format.json { render json: @owner.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /owners/1
@@ -45,11 +62,12 @@ class OwnersController < ApplicationController
   def update
     respond_to do |format|
       if @owner.update(owner_params)
-        format.html { redirect_to @owner, notice: 'Owner was successfully updated.' }
-        format.json { render :show, status: :ok, location: @owner }
+        format.html { redirect_to edit_owner_path, notice: 'Owner was successfully updated.' }
+        # format.html { redirect_to @owner, notice: 'Owner was successfully updated.' }
+        # format.json { render :show, status: :ok, location: @owner }
       else
         format.html { render :edit }
-        format.json { render json: @owner.errors, status: :unprocessable_entity }
+        # format.json { render json: @owner.errors, status: :unprocessable_entity }
       end
     end
   end
