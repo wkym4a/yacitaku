@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+
+    #ユーザーの追加登録や削除などは許可しない
+  before_action :guard_signup!, only: %i[cancel new destroy create]
+
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -63,4 +67,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  #ユーザーの追加登録や削除などは許可しない
+  def guard_signup!
+    raise ActionController::RoutingError, 'NOT FOUND'
+  end
+
 end
